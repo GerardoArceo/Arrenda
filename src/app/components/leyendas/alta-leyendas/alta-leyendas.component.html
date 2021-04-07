@@ -1,0 +1,61 @@
+<app-breadcrumb [opcion]="'Leyendas'" [link]="'/arrendadora/leyendas'" [subOpcion]="gestionMigaja"></app-breadcrumb>
+<div class="center-form">
+    <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+        <div class="form-head-table">
+            <div class="lmn-row">
+                <div class="lmn-col-sm text-center">
+                    <p>Datos Principales</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-form">
+            <form [formGroup]="leyendasForm" novalidate>
+                <div class="lmn-row">
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="leyendasForm.controls['empresaleyenda']" [controlName]="'empresaleyenda'" [label]="'Clave Leyenda'" [placeHolder]="''" [nodecimals]="true" [required]="disabled" [readonly]="true">
+                        </control-numeric>
+                    </div>
+                    <div class="lmn-col-md-6">                        
+                    </div>
+                </div>
+                <div class="lmn-row">
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="leyendasForm.controls['empresaleyenda']" [controlName]="'empresaleyenda'" [label]="'Empresa'" [placeHolder]="'Empresa'" [nodecimals]="true" [required]="required" [readonly]="disabled">
+                        </control-numeric>
+                    </div>
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="leyendasForm.controls['sirhleyenda']" [controlName]="'sirhleyenda'" [label]="'SIRH'" [placeHolder]="'SIRH'" [nodecimals]="true" [required]="required" [readonly]="disabled">
+                        </control-numeric>
+                    </div>
+                </div>
+                <div class="lmn-row">
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="leyendasForm.controls['regionleyenda']" [controlName]="'regionleyenda'" [label]="'Región'" [placeHolder]="'Región'" [nodecimals]="true" [required]="required" [readonly]="disabled">
+                        </control-numeric>
+                    </div>
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="leyendasForm.controls['tipdoctoleyenda']" [controlName]="'tipdoctoleyenda'" [label]="'Tipo de Documento'" [placeHolder]="'Tipo de Documento'" [nodecimals]="true" [required]="required" [readonly]="disabled">
+                        </control-numeric>
+                    </div>
+                </div>
+                <div class="lmn-row">
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="leyendasForm.controls['tipoleyenda']" [controlName]="'tipoleyenda'" [label]="'Tipo de Leyenda'" [placeHolder]="'Tipo de Leyenda'" [nodecimals]="true" [required]="required" [readonly]="disabled">
+                        </control-numeric>
+                    </div>
+                    <div class="lmn-col-md-6">
+                        <control-textarea [control]="leyendasForm.controls['descleyenda']" [controlName]="'descleyenda'" [label]="'Descripción Leyenda'" [placeHolder]="'Descripción Max 250 caractéres'" [required]="required" [readonly]="disabled">
+                        </control-textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-footer">
+            <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}" routerLink="/arrendadora/leyendas"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+            <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+        class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+        </div>
+    </div>
+</div>

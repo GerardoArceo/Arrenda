@@ -1,0 +1,55 @@
+<app-breadcrumb [opcion]="'Grupo / Concepto'" [link]="'/arrendadora/grupo-concepto'" [subOpcion]="gestionMigaja">
+</app-breadcrumb>
+<div class="center-form">
+  <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Datos Principales</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-form">
+      <form [formGroup]="grupoConceptoForm" novalidate>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="grupoConceptoForm.controls['cvegrupoconcepto']"
+              [controlName]="'cvegrupoconcepto'" [readonly]="true" [label]="'Clave de Grupo/Concepto'"
+              [placeHolder]="'Clave de Grupo/Concepto'" [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>  
+          <div class="lmn-col-md-6"></div>       
+        </div>
+        <div class="lmn-row">        
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="grupoConceptoForm.controls['gcgrupo']" [controlName]="'gcgrupo'"
+              [label]="'Grupo'" [placeHolder]="'Grupo'" [required]="required" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="grupoConceptoForm.controls['gcconcepto']" [controlName]="'gcconcepto'"
+              [label]="'Concepto'" [placeHolder]="'Concepto'" [required]="required" [readonly]="disabled"
+              [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>
+        </div>
+        <div class="lmn-row">          
+          <div class="lmn-col-md-12">
+            <control-textarea [control]="grupoConceptoForm.controls['gcdescripcion']" [controlName]="'gcdescripcion'"
+              [label]="'Descripción'" [placeHolder]="'Descripción'" [readonly]="disabled">
+            </control-textarea>
+          </div>               
+        </div>
+      </form>
+    </div>
+
+    <div class="form-footer">
+      <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}"
+        routerLink="/arrendadora/grupo-concepto"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+      <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+          class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+    </div>
+  </div>
+</div>

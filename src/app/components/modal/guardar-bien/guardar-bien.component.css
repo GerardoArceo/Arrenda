@@ -1,0 +1,15 @@
+.title {
+  font-weight: bold;
+  text-align: right;
+}
+.field {
+  text-align: right;
+}
+
+.form-body {
+  margin-bottom: 40px;
+}
+
+td {
+  width: 200px;
+}

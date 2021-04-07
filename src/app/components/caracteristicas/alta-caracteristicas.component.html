@@ -1,0 +1,44 @@
+<div class="lmn-row lmn-ml-5">
+  <p class="lmn-text-color-0">
+      <a routerLink="/arrendadora">Inicio</a>
+      <span class="lmn-m-3">></span>
+      <a routerLink="/arrendadora/caracteristicas">Caracteristicas</a>
+      <span class="lmn-m-3">></span>
+      <span>{{gestionMigaja}} Características</span>
+  </p>
+</div>
+
+<div class="center-form">
+  <form [formGroup]="Form">
+      <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form" id="formValidation">
+          <div class="form-head-table">
+              <div class="lmn-row">
+                  <div class="lmn-col-sm text-center">
+                      <p>Datos Principales</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="lmn-row">
+              <div class="lmn-form-group lmn-col-md-6 lmn-text-color-0">
+                  <label class="lmn-form-label" for="id">Clave Característica</label>
+                  <input id="id" [readonly]=true type="number" formControlName="id" class="lmn-input" placeholder="Clave Característica"/>                   
+              </div>                
+              <div class="lmn-form-group lmn-col-md-6 lmn-form-required">
+                  <label class="lmn-form-label" for="descripcionCaracteristica">Descripción Característica</label><br/>
+                  <input req formControlName="descripcionCaracteristica" id="descripcionCaracteristica" type="text" class="lmn-input {{Form.controls.descripcionCaracteristica.errors?.maxLengthNumber ? 'input-validation' : ''}}" placeholder="Descripción Característica" required [readonly]="deleteBnd"/>
+                  <div *ngIf="Form.controls.descripcionCaracteristica.errors?.maxLengthNumber" class="lmn-alert lmn-alert-danger lmn-alert-banner">
+                      Máximo 36 Caracteres
+                  </div>
+              </div>
+          </div>         
+          <div class="form-footer">
+              <a class="lmn-btn lmn-btn-danger lmn-ui-lg" routerLink="/arrendadora/caracteristicas">
+                  <em class="lmnicon lmnicon-left"></em> Regresar</a>
+              <button *ngIf="!isAdd" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+                  class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+          </div>
+
+      </div>
+  </form>
+</div>

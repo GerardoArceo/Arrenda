@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+    <div *ngFor="let c of caracteristicas">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <table>
+            <tr *ngIf="c.CRC_DESC_CARACTERISTICA.length>0">
+              <td class="title">{{c.CRC_DESC_CARACTERISTICA}}</td>
+              <td class="field">
+                <control-input [control]="form.controls[c.CRC_DESC_CARACTERISTICA]"
+                 [controlName]="c.CRC_DESC_CARACTERISTICA" 
+                 [placeHolder]="c.CRC_DESC_CARACTERISTICA"></control-input>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary"
+    [mat-dialog-close]="true" (click)="guardar()">
+      Guardar
+    </button>
+    <button mat-raised-button color="warn"
+    [mat-dialog-close]="false">
+      Cancelar
+    </button>
+</div>

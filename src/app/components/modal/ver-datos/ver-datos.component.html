@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+
+<div [ngSwitch]="data.type">
+
+    <div *ngSwitchCase="'monedas'">
+        <div mat-dialog-content>
+            <div *ngFor="let item of data.body | keyvalue">
+                <div *ngFor="let col of monedasModel.colsMonedas | keyvalue">
+                    <p *ngIf="col.key == item.key && col.value != ''"><strong>{{col.value}}:</strong>{{item.value}}</p>
+                </div>
+            </div>
+            <div *ngFor="let item of monedasModel.monedasExt | keyvalue">
+                <div *ngFor="let col of monedasModel.colsMonedas | keyvalue">
+                    <p *ngIf="col.key == item.key"> <strong>{{col.value}}:</strong> {{item.value}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'tipos-bien'">
+        <div mat-dialog-content>
+            <div *ngFor="let item of data.body | keyvalue">
+                <div *ngFor="let col of tiposBienModel.colsTiposBien | keyvalue">
+                    <p *ngIf="col.key == item.key && col.value != ''"> <strong>{{col.value}}:</strong> {{item.value}}</p>
+                </div>
+            </div>
+            <div *ngFor="let item of tiposBienModel.tiposBienExt | keyvalue">
+                <div *ngFor="let col of tiposBienModel.colsTiposBien | keyvalue">
+                    <p *ngIf="col.key == item.key"> <strong>{{col.value}}:</strong> {{item.value}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'agrupadores'">
+        <div mat-dialog-content>
+            <div *ngFor="let item of data.body | keyvalue">
+                <div *ngFor="let col of agrupadoresModel.colsAgrupadores | keyvalue">
+                    <p *ngIf="col.key == item.key && col.value != ''"> <strong>{{col.value}}:</strong> {{item.value}}</p>
+                </div>
+            </div>
+            <div *ngFor="let item of agrupadoresModel.agrupadoresExt | keyvalue">
+                <div *ngFor="let col of agrupadoresModel.colsAgrupadores | keyvalue">
+                    <p *ngIf="col.key == item.key"> <strong>{{col.value}}:</strong> {{item.value}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngSwitchDefault>
+        <div mat-dialog-content>
+            <p>Esto no debería ocurrir.</p>
+        </div>
+    </div>
+
+    <div class="lmn-float-right" mat-dialog-actions>
+     <!--   <button class="lmn-btn lmn-btn-primary" mat-button [mat-dialog-close]="true">Cerrar</button> -->
+     <div mat-dialog-actions></div>
+        <button mat-raised-button color="warn" [mat-dialog-close]="false">Cerrar</button>      
+    </div>
+</div>

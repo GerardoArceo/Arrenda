@@ -1,0 +1,65 @@
+<div class="lmn-row lmn-ml-5">
+  <p class="lmn-text-color-0">
+      <a routerLink="/arrendadora">Inicio</a>
+      <span class="lmn-m-3">></span>
+      <a routerLink="/arrendadora/aseguradoras">Aseguradoras</a>
+      <span class="lmn-m-3">></span>
+      <span>{{gestionMigaja}} Aseguradoras</span>
+  </p>
+</div>
+
+
+<div class="center-form">
+  <form [formGroup]="Form">
+      <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form" id="formValidation">
+          <div class="form-head-table">
+              <div class="lmn-row">
+                  <div class="lmn-col-sm text-center">
+                      <p>Datos Principales</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="lmn-row" >
+              <div class="lmn-form-group lmn-col-md-6">
+                  <label class="lmn-form-label" for="id">Clave de Aseguradora</label>
+                  <input [readonly]=true type="number" formControlName="id" id="id" class="lmn-input" placeholder="Clave de Aseguradora" />
+              </div>
+          
+              <div class="lmn-form-group lmn-col-md-6 lmn-form-required">
+                  <label class="lmn-form-label" for="Nombre">Nombre Aseguradora</label><br/>
+                  <input req [readonly]="deleteBnd" formControlName="Nombre" id="Nombre" type="text" class="lmn-input {{Form.controls.Nombre.errors?.maxLengthNumber ? 'input-validation' : ''}}" placeholder="Nombre" required/>
+                  <div *ngIf="Form.controls.Nombre.errors?.maxLengthNumber" class="lmn-alert lmn-alert-danger lmn-alert-banner">
+                      Máximo 36 Caracteres
+                  </div>
+              </div>
+          </div>
+
+          <div class="lmn-row">
+            <div class="lmn-form-group lmn-col-md-6">
+                <label class="lmn-form-label" for="dias">Dias acordados</label>
+                <input [readonly]="deleteBnd" id="dias" type="number" formControlName="dias" class="lmn-input {{Form.controls.dias.errors?.maxLengthNumber ? 'input-validation' : ''}}" placeholder="Dias acordados" required />
+                <div *ngIf="Form.controls.dias.errors?.maxLengthNumber" class="lmn-alert lmn-alert-danger lmn-alert-banner">
+                    Máximo 2 Dígitos
+                </div>
+            </div>
+            <div class="lmn-form-group lmn-col-md-6">
+                <label class="lmn-form-label" for="observaciones">Observaciones</label>
+                Observaciones <br/>
+                <textarea [readonly]="deleteBnd" id="observaciones" cols="35" rows="5" formControlName="observaciones" placeholder="Observaciones" class="lmn-input"></textarea>      
+                <div *ngIf="Form.controls.observaciones.errors?.maxLengthNumber" class="lmn-alert lmn-alert-danger lmn-alert-banner">
+                    Máximo 250 Caracteres
+                </div>
+            </div>
+          </div>
+                   
+          <div class="form-footer">
+            <a class="lmn-btn lmn-btn-danger lmn-ui-lg {{isChecker ? 'float-left' : ''}}" routerLink="/arrendadora/aseguradoras">
+              <em class="lmnicon lmnicon-left"></em> Regresar</a>
+              <button *ngIf="!isAdd" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+                class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+          </div>
+
+      </div>
+  </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="center-form lmn-text-color-0">
+  <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Datos Principales</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-body">
+
+      <form [formGroup]="facturaForm" novalidate>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-input [control]="facturaForm.controls['Factura']" [controlName]="'Factura'"
+              [label]="'Número Factura'" [placeHolder]="'Número Factura'" [readonly]="disabled">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-datepicker [control]="facturaForm.controls['Fecha']" [controlName]="'Fecha'" [label]="'Fecha'"
+              [placeHolder]="'Fecha'" >
+            </control-datepicker>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-input [control]="facturaForm.controls['Ncliente']"
+              [controlName]="'Ncliente'" [label]="'Número Cliente'" [placeHolder]="'Número Cliente'"
+              [readonly]="disabled">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-select [control]="facturaForm.controls['ClaveEmpresa']" [controlName]="'ClaveEmpresa'"
+              [label]="'Clave Empresa'" [valuePrimitive]="true" [textField]="'NOMBRE_EMPRESA'"
+              [disabled]="disabled" [valueField]="'CLAVE_EMPRESA'" [showId]="false" [allowNulls]="true"
+              [dataSource]="empresaArray">
+            </control-select>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-12">
+            <control-customselect [control]="facturaForm.controls['ClaveProveedor']" [controlName]="'ClaveProveedor'"
+              [label]="'Clave Proveedor'" [placeHolder]="'Clave Proveedor'" 
+              
+              [secondControl]="proveedorNombreControl" [secondControlName]="'proveedor'" 
+              [secondLabel]="'Nombre Proveedor'" [secondPlaceHolder]="'Nombre Proveedor'" [secondValue]="'Hola mundo'"
+
+              [iconInFirstInput]="true"
+
+              [title]="'Catálogo de Proveedores'" [tblField1]="'IDX'" [tblField2]="'ID'" [firstFieldTitle]="'Id'" [secondFieldTitle]="'Clave'"
+              [extraColumns]="[{ field: 'NAME', title: 'Nombre'}]" [data]="proveedorArray" [keySearch]="'IDX'"
+              (onSelection)="proveedor_OnSelect($event)" (onControlFocusOut)="proveedor_OnSelect($event)">
+            </control-customselect>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-footer text-center">
+      <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardarFactura()'>
+        <i class=" lmnicon lmnicon-save"></i> Guardar
+      </button>
+      <a class="lmn-btn lmn-btn-danger lmn-ui-lg"
+        routerLink="/arrenda/facturaProveedor">
+        <i class="lmnicon lmnicon-close"></i> Cancelar
+      </a>
+    </div>
+  </div>
+</div>

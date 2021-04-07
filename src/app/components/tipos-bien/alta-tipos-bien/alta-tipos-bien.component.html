@@ -1,0 +1,172 @@
+<app-breadcrumb [opcion]="'Tipos Bien'" [link]="'/arrendadora/tipos-bien'" [subOpcion]="gestionMigaja"></app-breadcrumb>
+
+<div class="center-form lmn-text-color-0">
+  <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Datos Principales</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-head-table">
+      <div class="lmn-row-md-12">
+        <div class="lmn-col-sm text-center">
+          Activo
+        </div>
+      </div>
+    </div>
+    <div class="center-form">
+      <form novalidate [formGroup]="tiposBienForm">
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="tiposBienForm.controls['idtipobien']" [controlName]="'idtipobien'"
+              [label]="'Clave Tipo Bien'" [placeHolder]="'Clave Tipo Bien'" [required]="required" [readonly]="true"
+              [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-6">
+
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-2">
+            <control-numeric [control]="tiposBienForm.controls['tbcvefamilia']" [controlName]="'tbcvefamilia'"
+              [label]="'Familia'" [placeHolder]="'Familia'" [required]="required" [readonly]="true" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-2">
+            <control-numeric [control]="tiposBienForm.controls['tbcvegenerico']" [controlName]="'tbcvegenerico'"
+              [label]="'Género'" [placeHolder]="'Género'" [required]="required" [readonly]="true" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-2">
+            <control-numeric [control]="tiposBienForm.controls['tbcvedivision']" [controlName]="'tbcvedivision'"
+              [label]="'División'" [placeHolder]="'División'" [required]="required" [readonly]="true" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-2">
+            <control-numeric [control]="tiposBienForm.controls['tbcvegrupo']" [controlName]="'tbcvegrupo'"
+              [label]="'Grupo'" [placeHolder]="'Grupo'" [required]="required" [readonly]="true" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-2">
+            <control-numeric [control]="tiposBienForm.controls['tbcvesubgrupo']" [controlName]="'tbcvesubgrupo'"
+              [label]="'Subgrupo'" [placeHolder]="'Subgrupo'" [required]="required" [readonly]="true" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-2">
+            <control-numeric [control]="tiposBienForm.controls['tbcveespecifico']" [controlName]="'tbcveespecifico'"
+              [label]="'Específico'" [placeHolder]="'Específico'" [required]="required" [readonly]="true"
+              [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-input [control]="tiposBienForm.controls['tbdescripcion']" [controlName]="'tbdescripcion'"
+              [label]="'Descripción'" [placeHolder]="'Descripción'" [required]="required" [readonly]="disabled">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-2">
+            <control-numeric [control]="tiposBienForm.controls['tbvidautil']" [controlName]="'tbvidautil'"
+              [label]="'Vida Útil'" [placeHolder]="'Vida Útil'" [required]="false" [readonly]="disabled">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-4">
+            <control-numeric [control]="tiposBienForm.controls['tbdictaminar']" [controlName]="'tbdictaminar'"
+              [label]="'Tiempo de Auditoría (días)'" [placeHolder]="'Tiempo de Auditoría (días)'" [required]="false"
+              [readonly]="disabled">
+            </control-numeric>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-4">
+            <control-numeric [control]="tiposBienForm.controls['tbfacdepreciacion']" [controlName]="'tbfacdepreciacion'"
+              [label]="'Factor Depreciación'" [placeHolder]="'Factor Depreciación'" [required]="false"
+              [readonly]="disabled" [min]="0" [spinners]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-4">
+            <control-input [control]="tiposBienForm.controls['tbcvecurva']" [controlName]="'tbcvecurva'"
+              [label]="'Curva de Demérito'" [placeHolder]="'Curva de Demérito'" [required]="false" [readonly]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-4">
+            <control-input [control]="tiposBienForm.controls['tbtipogar']" [controlName]="'tbtipogar'"
+              [label]="'Tipo Garantía'" [placeHolder]="'Tipo Garantía'" [required]="false" [readonly]="true">
+            </control-input>
+          </div>
+        </div>
+
+        <div class="form-head-table">
+          <div class="lmn-row">
+            <div class="lmn-col-sm text-center">
+              Características
+            </div>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <!--inicia-->
+          <div class="lmn-form-group lmn-col-md-2" [ngClass]="{'lmn-form-required':required}">
+            <label class="lmn-form-label" for="cveagrupador">Grupo de Características</label>
+            <input (focusout)="setDataSearchAgrupador(true)" [formControl]="tiposBienForm.controls['cveagrupador']"
+              [name]="'cveagrupador'" id="cveagrupador" type="number" min="1" maxlength="3"
+              class="lmn-input no-spinners"
+              [ngClass]="{'input-validation':tiposBienForm.controls['cveagrupador'].invalid==true && (tiposBienForm.controls['cveagrupador'].dirty || tiposBienForm.controls['cveagrupador'].touched)}"
+              placeholder="Grupo de Características" [readonly]="disabled" [required]="required" />
+            <control-errors [control]="tiposBienForm.controls['cveagrupador']"></control-errors>
+          </div>
+          <div class="lmn-form-group lmn-col-md-10">
+            <label class="lmn-form-label">Agrupador</label>
+            <div class="lmn-input-group">
+              <div class="lmn-input-group-append">
+                <button (click)="openModalAgrupador()" class='lmn-btn lmn-btn-primary lmn-modal-event'
+                  [disabled]="disabled">
+                  <em class="lmnicon lmnicon-search"></em></button>
+              </div>
+              <input [formControl]="agrupadorNombreControl" [name]="'agrupadorNombre'" placeholder="Nombre Agrupador"
+                type="text" class="lmn-input" readonly />
+            </div>
+          </div>
+          <!--termina-->
+        </div>
+        <div class="lnm-row ">
+          <div class="lmn-scrollbar-x">
+            <mat-form-field>
+              <mat-label>Buscar</mat-label>
+              <input matInput type="search" [(ngModel)]="searchValue" [name]="'search'" #input>
+            </mat-form-field>
+            <control-grid class="lmn-col-md-12" [search]="searchValue" [dataSource]="caracteristicasData"
+              [tableColumns]="caracteristicasColumns">
+            </control-grid>
+          </div>
+        </div>
+        <div class="lnm-row ">
+        </div>
+      </form>
+    </div>
+
+    <div class="form-footer">
+      <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}"
+        routerLink="/arrendadora/tipos-bien">
+        <em class="lmnicon lmnicon-left"></em> Regresar
+      </a>
+      <button *ngIf="authorize" class="lmn-btn lmn-btn-warning lmn-ui-lg" (click)='rechazar()'>
+        Rechazar <em class=" lmnicon lmnicon-close "></em>
+      </button>
+      <button *ngIf="authorize" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='autorizar()'>
+        Autorizar <em class=" lmnicon lmnicon-check "></em>
+      </button>
+      <button *ngIf="!authorize" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>
+        {{btnAddText}} <em class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em>
+      </button>
+    </div>
+
+  </div>
+</div>

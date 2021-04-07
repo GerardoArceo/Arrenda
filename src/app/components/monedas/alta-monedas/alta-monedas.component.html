@@ -1,0 +1,53 @@
+<app-breadcrumb [opcion]="'Monedas'" [link]="'/arrendadora/monedas'" [subOpcion]="gestionMigaja"></app-breadcrumb>
+<div class="center-form">
+<div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+  <div class="form-head-table">
+    <div class="lmn-row">
+      <div class="lmn-col-sm text-center">
+        <p>Datos Principales</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-form">
+    <form [formGroup]="monedasForm" novalidate>
+      <div class="lmn-row">
+        <div class="lmn-col-md-6">
+          <control-numeric [control]="monedasForm.controls['cvemoneda']" 
+          [controlName]="'cvemoneda'"[readonly]="true"
+            [label]="'Clave de Moneda'" [placeHolder]="'Clave de Moneda'" 
+            [spinners]="false" [nodecimals]="true">
+          </control-numeric>
+        </div>
+        <div class="lmn-col-md-6">
+          <control-input [control]="monedasForm.controls['nommoneda']"
+              [controlName]="'nommoneda'" [label]="'Descripción'" [placeHolder]="'Descripción de Moneda'" [required]="required"
+              [readonly]="disabled">
+          </control-input>         
+        </div>      
+      </div>
+      <div class="lmn-row">
+        <div class="lmn-col-md-6">
+          <control-input [control]="monedasForm.controls['nomcortomoneda']"
+              [controlName]="'nomcortomoneda'" [label]="'Nombre Corto'" [placeHolder]="'Nombre Corto'" [required]="required"
+              [readonly]="disabled">
+          </control-input>          
+        </div>
+        <div class="lmn-col-md-6">
+          <control-textarea [control]="monedasForm.controls['obsmoneda']"
+            [controlName]="'obsmoneda'" [label]="'Observaciones'" [placeHolder]="'Observaciones'" 
+            [readonly]="disabled">
+          </control-textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="form-footer">
+    <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}"
+      routerLink="/arrendadora/monedas"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+    <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+        class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button> 
+      </div>
+  </div>
+</div>

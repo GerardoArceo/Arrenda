@@ -1,0 +1,122 @@
+<div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+  <div class="form-head-table">
+    <div class="lmn-row">
+      <div class="lmn-col-sm-12" *ngIf="isChecker==false">
+        <a routerLink="/arrenda/facturaProveedor/alta" class="lmn-btn lmn-btn-primary lmn-ui-lg">
+          Alta <i class="lmnicon lmnicon-add"></i>
+        </a>
+        <button type="button" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)="btnCargaMasiva()">
+          <i class="lmnicon lmnicon-upload"></i> Carga Masiva
+        </button>
+        <button type="button" class="lmn-btn lmn-bg-color-1 lmn-text-color-2 lmn-ui-lg"
+          (click)="btnDescargaPlantilla()">
+          <i class="lmnicon lmnicon-download"></i> Descargar Plantilla
+        </button>
+      </div>
+      <div class="lmn-col-sm text-center">
+        <p>Facturas Proveedor</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-body">
+    <div class="lmn-col-12 lmn-text-color-0">
+      <mat-form-field>
+        <mat-label>Buscar</mat-label>
+        <input matInput [(ngModel)]="searchValue" [name]="'search'" #input>
+      </mat-form-field>
+
+      <div class="lmn-scrollbar-x">
+        <control-grid [search]="searchValue" [dataSource]="dataSource" [tableColumns]="columns">
+        </control-grid>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form" *ngIf="showCargaMasiva">
+  <div class="form-head-table">
+    <div class="lmn-col-sm text-center">
+      <p>Datos a cargar</p>
+    </div>
+  </div>
+
+  <div class="form-body">
+    <div class="lmn-col-12 lmn-text-color-0">
+      <div class="lmn-scrollbar-x">
+        <control-grid [dataSource]="dataSource2" [tableColumns]="columns2"></control-grid>
+      </div>
+      <button type="button" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)="saveCargaMasiva()">
+        <i class="lmnicon lmnicon-save"></i> Guardar
+      </button>
+      <button type="button" class="lmn-btn lmn-btn-danger lmn-ui-lg" (click)="cancelCargaMasiva()">
+        <i class="lmnicon lmnicon-trash"></i> Cancelar
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<ng-template #accionTemplate let-factura="item">
+  <ng-container *ngIf="isChecker">
+    <button (click)="modelService.setData(factura)" type="button" class='lmn-btn lmn-btn-warning'
+      matTooltip="Ver detalle de la factura" [routerLink]="'/arrenda/facturaProveedor/autorizar'"
+      *ngIf="factura.STATUS!==0">
+      <i class="lmnicon lmnicon-right"></i>
+    </button>
+    <button (click)="modelService.setData(factura)" type="button" class='lmn-btn lmn-btn-warning'
+      matTooltip="Ver detalle de la factura" [routerLink]="'/arrenda/facturaProveedor/autorizar'"
+      *ngIf="factura.STATUS===1">
+      <i class="lmnicon lmnicon-time"></i>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="!isChecker">
+    <button (click)="modelService.setData(factura)" type="button" *ngIf="factura.STATUS===1" class='lmn-btn lmn-bg-color-1 lmn-text-color-2'
+      matTooltip="Pendiente de Aprobación de modificación" [routerLink]="'/arrenda/facturaProveedor/detalle'">
+      <i class="lmnicon lmnicon-time"></i>
+    </button>
+    <button (click)="modelService.setData(factura)" type="button" class='lmn-btn'
+      matTooltip="Ver detalle de la factura" [routerLink]="'/arrenda/facturaProveedor/detalle'">
+      <i class="lmnicon lmnicon-view"></i>
+    </button>
+    <button (click)="modelService.setData(factura)" type="button" class='lmn-btn lmn-btn-primary'
+      matTooltip="Asociar bienes a la factura" [routerLink]="'/arrenda/facturaProveedor/agregarBienes'"
+      [disabled]="factura.STATUS===1" >
+      <i class="lmnicon lmnicon-add"></i>
+    </button>
+    <button (click)="modelService.setData(factura)" type="button" class='lmn-btn lmn-btn-info'
+      matTooltip="Clonar Registro" [routerLink]="'/arrenda/facturaProveedor/clonar'" [disabled]="factura.STATUS===1">
+      <i class="lmnicon lmnicon-copy"></i>
+    </button>
+    <button (click)="modelService.setData(factura)" type="button" class='lmn-btn lmn-btn-success'
+      matTooltip="Editar Registro" routerLink="/arrenda/facturaProveedor/editar" [disabled]="factura.STATUS===1">
+      <i class="lmnicon lmnicon-pencil"></i>
+    </button>
+    <button (click)="eliminar(factura)" type="button" class='lmn-btn lmn-btn-danger' matTooltip="Borrar Registro"
+      [disabled]="factura.STATUS===1">
+      <i class="lmnicon lmnicon-trash"></i>
+    </button>
+  </ng-container>
+</ng-template>
+
+<ng-template #accionTemplate2 let-factura="item">
+  <button (click)="eliminarRegistroCargar(factura)" type="button" class='lmn-btn lmn-btn-danger'
+    matTooltip="Borrar Registro">
+    <i class="lmnicon lmnicon-trash"></i>
+  </button>
+</ng-template>
+
+<ng-template #importeTemplate let-rowVal="item" let-columnName="columnName">
+  {{'$'}}{{rowVal[columnName]|number:'1.2-2'}}
+</ng-template>
+
+<input type="file" #masivaFile name="file" class="lmn-invisible" [disabled]="false" [readOnly]="true"
+  (change)="fileLoaded($event)" style="opacity: 0;"
+  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />

@@ -1,0 +1,62 @@
+<app-breadcrumb [opcion]="'Estatus'" [link]="'/arrendadora/status'" [subOpcion]="gestionMigaja">
+</app-breadcrumb>
+<div class="center-form">
+  <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Datos Principales</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-form">
+      <form [formGroup]="statusForm" novalidate>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="statusForm.controls['idstatus']" [controlName]="'idstatus'" [readonly]="true"
+              [label]="'Clave'" [placeHolder]="'Clave'" [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-6"></div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="statusForm.controls['clavestatus']" [controlName]="'clavestatus'"
+              [readonly]="true" [label]="'Clave de Estatus'" [placeHolder]="'Clave de Estatus'" [required]="required"
+              [readonly]="disabled" [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-input [control]="statusForm.controls['nomtablastatus']" [controlName]="'nomtablastatus'"
+              [label]="'Tabla'" [placeHolder]="'Tabla'" [required]="required" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-12">
+            <control-input [control]="statusForm.controls['descstatus']" [controlName]="'descstatus'"
+              [label]="'Descripción'" [placeHolder]="'Descripción'" [required]="required" [readonly]="disabled"
+              [spinners]="false" [nodecimals]="true">
+            </control-input>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-12">
+            <control-textarea [control]="statusForm.controls['obsstatus']" [controlName]="'obsstatus'"
+              [label]="'Observaciones'" [placeHolder]="'Observaciones'"  [readonly]="disabled">
+            </control-textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-footer">
+      <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}"
+        routerLink="/arrendadora/status"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+      <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+          class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+    </div>
+  </div>
+</div>

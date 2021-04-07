@@ -1,0 +1,38 @@
+<app-breadcrumb [opcion]="'Agrupadores'" [link]="'/arrendadora/agrupadores'" [subOpcion]="gestionMigaja"></app-breadcrumb>
+<div class="center-form">
+    <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+        <div class="form-head-table">
+            <div class="lmn-row">
+                <div class="lmn-col-sm text-center">
+                    <p>Datos Principales</p>
+                </div>
+            </div>
+        </div>
+        <div class="center-form">
+            <form novalidate [formGroup]="agrupadoresForm">
+                <div class="lmn-row">
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="agrupadoresForm.controls['cveagrupador']" 
+                        [controlName]="'cveagrupador'"
+                            [label]="'Clave Agrupador'" [placeHolder]="'Clave Agrupador'"                             
+                            [readonly]="true" [spinners]="false" [nodecimals]="true">
+                        </control-numeric>
+                    </div>
+                    <div class="lmn-form-group lmn-col-md-6 lmn-form-required">
+                        <control-input [control]="agrupadoresForm.controls['descagrupador']" [controlName]="'descagrupador'"
+                            [label]="'Descripción de Agrupador'" [placeHolder]="'Descripción de Agrupador'"
+                            [required]="required" [readonly]="disabled">
+                        </control-input>
+                    </div>
+                </div>                 
+            </form>
+        </div>
+
+        <div class="form-footer">
+            <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}"
+                routerLink="/arrendadora/agrupadores"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+            <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+                    class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+        </div>
+    </div>
+</div>

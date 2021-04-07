@@ -1,0 +1,282 @@
+<div class="center-form lmn-text-color-0">
+  <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form text-center">
+
+
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Datos Generales</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Número factura:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.CLAVE_FACTURA}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Fecha:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.FECHA_ALTA | date}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Número Cliente:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.NUMERO_CLIENTE}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Clave Empresa:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.CLAVE_EMPRESA}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Clave de Proveedor:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.CLAVE_PROVEEDOR}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Nombre de Proveedor:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.NOMBRE_PROVEEDOR}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Número factura:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.CLAVE_FACTURA}}
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Inventario</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Consecutivo Factura:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.CLAVE_FACTURA}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Status:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.ESTATUS}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Moneda:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.NOMBRE_MONEDA}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Aut. Tipo de Cambio:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.AUT_TIPO_CAMBIO}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Tipo de cambio:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.TIPO_CAMBIO}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Importe:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.IMPORTE}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          IVA:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.IVA}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Nota de crédito</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Número:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.NUMERO_NOTA_CREDITO}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Importe de nota de crédito:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.IMPORTE_NOTA_CREDITO}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          IVA:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.IVA_NOTA_CREDITO}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Observaciones:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.OBSERVACIONES}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Opción de compra</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Tipo:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.TIPO_COMPRA}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Importe de compra:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.IMPORTE_COMPRA}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          IVA:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.IVA_COMPRA}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Primera renta:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.PRIMERA_RENTA | date}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          IVA Costo Adquisición:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.IVA_COSTO_ADQUISICION}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Importe No. Aforado o Sobreprecio:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.AFORO}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Valor Residual:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.VALOR_RESIDUAL}}
+        </div>
+      </div>
+      <div class="lmn-row text-center">
+        <div class="lmn-col-md-6 left-container">
+          Imp. Rentas Garantía:
+        </div>
+        <div class="lmn-col-md-6 right-container">
+          {{factura.RENTA}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Clasificación tipo de bien</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <control-grid [search]="''" [dataSource]="factura.items" [tableColumns]="columnsItem" [dataSize]="0">
+          </control-grid>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-footer text-center">
+      <a class="lmn-btn lmn-btn-danger lmn-ui-lg" routerLink="/arrenda/facturaProveedor">
+        <i class="lmnicon lmnicon-left"></i> Regresar
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<app-breadcrumb [opcion]="'Vendor-Program'" [link]="'/arrendadora/vendor-program'" [subOpcion]="gestionMigaja"></app-breadcrumb>
+<div class="center-form">
+    <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+        <div class="form-head-table">
+            <div class="lmn-row">
+                <div class="lmn-col-sm text-center">
+                    <p>Datos Principales</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-form">
+            <form [formGroup]="vendorprogramForm" novalidate>
+                <div class="lmn-row">
+                    <div class="lmn-col-md-6">
+                        <control-numeric [control]="vendorprogramForm.controls['cvevendor']" [controlName]="'cvevendor'" [readonly]="true" [label]="'Clave'" [placeHolder]="'Clave de Vendor'" [spinners]="false" [nodecimals]="true">
+                        </control-numeric>
+                    </div>
+                    <div class="lmn-col-md-6">
+                        <control-input [control]="vendorprogramForm.controls['descvendor']" [controlName]="'descvendor'" [label]="'Descripción'" [placeHolder]="'Descripción de Vendor máximo 60 caracteres'" [required]="required" [readonly]="disabled">
+                        </control-input>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="center-form">
+            <div class="form-footer">
+                <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}" routerLink="/arrendadora/vendor-program"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+                <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+        class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+            </div>
+        </div>
+    </div>
+</div>

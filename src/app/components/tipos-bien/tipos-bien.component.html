@@ -1,0 +1,46 @@
+<app-breadcrumb [opcion]="'Tipos de Bien'"></app-breadcrumb>
+<div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+  <div class="form-head-table">
+    <div class="lmn-row">
+      <div class="lmn-col-sm text-center">
+        <p>Catálogo de Tipos de Bien</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-body">
+    <div class="lmn-col-12 lmn-text-color-0">
+      <mat-form-field>
+        <mat-label>Buscar</mat-label>
+        <input matInput [(ngModel)]="searchValue" [name]="'search'" #input>
+      </mat-form-field>
+      <div class="lmn-scrollbar-x">
+        <control-grid [search]="searchValue" [dataSource]="dataSource" [tableColumns]="columns">
+        </control-grid>
+      </div>
+    </div>
+  </div>
+ <div class="form-footer"></div>
+  
+</div>
+
+<ng-template #accionTemplate let-columnVal="item">  
+  <button (click)="verModal(columnVal)" type="button" class="lmn-btn lmn-btn-light" matTooltip="Vista previa">
+    <em class="lmnicon lmnicon-view"></em>
+  </button>
+  <button (click)="gestionImprimePDF(columnVal)" *ngIf="isChecker==false" type="button" class='lmn-btn lmn-bg-color-1 lmn-text-color-2'
+    matTooltip="Descargar PDF">
+    <em class="lmnicon lmnicon-file-pdf"></em>
+  </button>
+  <button (click)="gestionBloqueadoEditar(columnVal)" *ngIf="isChecker==false" type="button"
+    class='lmn-btn lmn-btn-success' matTooltip="Editar Registro"
+    routerLink="/arrendadora/tipos-bien/editar">
+    <em class="lmnicon lmnicon-pencil"></em>
+  </button>
+</ng-template>
+<ng-template #checkTemplate let-columnVal="item">
+  <mat-checkbox class="primary lmn-text-center" *ngIf="columnVal.estatus==1"
+    [color]="'primary'" [(ngModel)]="columnVal.ENVIADO"
+    (click)="changeRow(columnVal)">
+  </mat-checkbox>
+</ng-template>

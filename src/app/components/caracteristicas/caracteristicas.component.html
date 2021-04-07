@@ -1,0 +1,81 @@
+<div class="lmn-row lmn-ml-5">
+  <p class="lmn-text-color-0">
+      <a routerLink="/arrendadora">Inicio</a>
+      <span class="lmn-m-3">></span>
+      <span class="lmn-m-3"></span>
+      <span>Características</span>
+  </p>
+</div>
+
+<div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+  <div class="form-head-table">
+      <div class="lmn-row">
+         <div class="lmn-col-sm-1" *ngIf="!isChecker">
+              <a routerLink="/arrendadora/caracteristicas/alta" class="lmn-btn lmn-btn-primary lmn-ui-lg">Alta <em
+                        class="lmnicon lmnicon-add"></em></a>
+         </div>
+          <div class="lmn-col-sm text-center">
+              <p>Catálogo de Características</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="form-body">
+
+    <div class="lmn-col-12 lmn-text-color-0">
+
+  <mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table-100" matSort matSortActive="cvecaracteristica" matSortDirection="desc">
+  
+      <!-- ID Característica -->
+      <ng-container matColumnDef="cvecaracteristica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Característica </th>
+        <td mat-cell *matCellDef="let element"> {{element.cvecaracteristica}} </td>
+      </ng-container>
+  
+      <!-- Name Característica -->
+      <ng-container matColumnDef="desccaracteristica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción Característica </th>
+        <td mat-cell *matCellDef="let element"> {{element.desccaracteristica}} </td>
+      </ng-container>     
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef class="btn-accion"> Acciones </th>
+        <td mat-cell *matCellDef="let element" class="btn-accions">
+          <a (click)="gestionImprimePDF(element)" class='lmn-btn lmn-bg-color-1 lmn-text-color-2' matTooltip="Descargar PDF"><em
+            class="lmnicon lmnicon-file-pdf"></em></a>
+          <a (click)="gestionBloqueadoEditar(element)" routerLink="/arrendadora/caracteristicas/editar" class='lmn-btn lmn-btn-success' matTooltip="Editar Registro"><em
+            class="lmnicon lmnicon-pencil"></em></a>
+          <a (click)="gestionBloqueadoBorrar(element)" routerLink="/arrendadora/caracteristicas/borrar" class='lmn-btn lmn-btn-danger' matTooltip="Borrar Registro"><em
+              class="lmnicon lmnicon-trash"></em></a>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Sin Resultados "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator #paginator 
+                    [pageSizeOptions]="[5,10, 25, 100]"
+                    [pageSize]=25
+                    [showFirstLastButtons]="true">                    
+    </mat-paginator>
+  </div>      
+    </div>
+</div>  
+
+
+<div class="form-footer"></div>
+  
+</div>
+

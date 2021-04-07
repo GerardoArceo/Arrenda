@@ -1,0 +1,12 @@
+<div class="lmn-row lmn-ml-5">
+  <p class="lmn-text-color-0">
+      <a routerLink="/arrendadora">Inicio</a>
+      <span class="lmn-m-3">></span>
+      <a [routerLink]="[link]" *ngIf="link.length>0">{{opcion}}</a>
+      <a *ngIf="link.length==0">{{opcion}}</a>
+      <ng-container *ngIf="subOpcion!=''">
+        <span class="lmn-m-3">></span>
+      <span>{{subOpcion}}</span>
+      </ng-container>
+  </p>
+</div>

@@ -1,0 +1,135 @@
+<app-breadcrumb [opcion]="'Proveedores'" [link]="'/arrendadora/proveedores'" [subOpcion]="gestionMigaja">
+</app-breadcrumb>
+<div class="center-form">
+  <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Datos Principales</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-form">
+      <form [formGroup]="proveedoresForm" novalidate>
+        <div class="lmn-row">
+          <div class="lmn-col-md-4">
+            <control-numeric [control]="proveedoresForm.controls['cveproveedor']" [controlName]="'cveproveedor'"
+              [readonly]="true" [label]="'Clave'" [placeHolder]="'Clave'" [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-4">
+            <control-input [control]="proveedoresForm.controls['giroprov']" [controlName]="'giroprov'"
+              [label]="'Giro'" [placeHolder]="'Giro'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-4">
+            <control-datepicker [control]="proveedoresForm.controls['fechaaltaprov']" [controlName]="'fechaaltaprov'"
+              [label]="'Fecha Alta'" [placeHolder]="'Fecha Alta'" [required]="required">
+            </control-datepicker>
+          </div>          
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-8">
+            <control-input [control]="proveedoresForm.controls['nomprov']" [controlName]="'nomprov'" [label]="'Nombre'"
+              [placeHolder]="'Nombre'" [required]="required" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-4">
+            <control-input [control]="proveedoresForm.controls['rfcprov']" [controlName]="'rfcprov'" [label]="'RFC'"
+              [placeHolder]="'RFC'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6"><!--Poner clave de Tel1 y Tel2 en base a modelo teléfonos-->            
+            <control-numeric [control]="proveedoresForm.controls['cveproveedor']" [controlName]="'cveproveedor'" 
+              [readonly]="disabled" [label]="'Teléfono 1'" [placeHolder]="'Telefono 1'" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="proveedoresForm.controls['cveproveedor']" [controlName]="'cveproveedor'"
+              [readonly]="disabled" [label]="'Teléfono 2'" [placeHolder]="'Teléfono 2'" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>          
+        </div>
+        <div class="lmn-row">         
+          <div class="lmn-col-md-6">
+            <control-input [control]="proveedoresForm.controls['emailprov']" [controlName]="'emailprov'"
+              [label]="'Email'" [placeHolder]="'Email'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-input [control]="proveedoresForm.controls['nomcontactoprov']" [controlName]="'nomcontactoprov'"
+              [label]="'Contacto'" [placeHolder]="'Contacto'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-input [control]="proveedoresForm.controls['calleprov']" [controlName]="'calleprov'"
+              [label]="'Calle'" [placeHolder]="'Calle'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-input [control]="proveedoresForm.controls['coloniaprov']" [controlName]="'coloniaprov'"
+              [label]="'Colonia'" [placeHolder]="'Colonia'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>         
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-input [control]="proveedoresForm.controls['poblacionprov']" [controlName]="'poblacionprov'"
+              [label]="'Población'" [placeHolder]="'Población'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="proveedoresForm.controls['cpprov']" [controlName]="'cpprov'"
+              [label]="'Código Postal'" [placeHolder]="'Código Postal'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-numeric>
+          </div>          
+        </div>
+        <div class="lmn-row">
+          
+          <div class="lmn-col-md-6">
+            <control-input [control]="proveedoresForm.controls['paisprov']" [controlName]="'paisprov'"
+              [label]="'País'" [placeHolder]="'País'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-input [control]="proveedoresForm.controls['estadoprov']" [controlName]="'estadoprov'"
+              [label]="'Estado'" [placeHolder]="'Estado'" [required]="disabled" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-12">
+            <control-textarea [control]="proveedoresForm.controls['obsprov']" [controlName]="'obsprov'"
+            [label]="'Observaciones'" [placeHolder]="'Observaciones'"  [readonly]="disabled">
+          </control-textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-footer">
+      <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}"
+        routerLink="/arrendadora/proveedores"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+      <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+          class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+    </div>
+  </div>
+</div>

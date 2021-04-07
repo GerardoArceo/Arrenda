@@ -1,0 +1,59 @@
+<app-breadcrumb [opcion]="'Ejecutivos'" [link]="'/arrendadora/ejecutivos'" [subOpcion]="gestionMigaja">
+</app-breadcrumb>
+<div class="center-form">
+  <div class="lmn-shadow-lg lmn-p-3 lmn-mb-5 color-form">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Datos Principales</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-form">
+      <form [formGroup]="ejecutivosForm" novalidate>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-numeric [control]="ejecutivosForm.controls['cveejecutivo']" [controlName]="'cveejecutivo'" [readonly]="true"
+              [label]="'Clave'" [placeHolder]="'Clave'" [spinners]="false" [nodecimals]="true">
+            </control-numeric>
+          </div>
+          <div class="lmn-col-md-6"></div>
+        </div>
+        <div class="lmn-row">         
+          <div class="lmn-col-md-6">
+            <control-input [control]="ejecutivosForm.controls['nominaejecutivo']" [controlName]="'nominaejecutivo'"
+              [label]="'Número de Nómina'" [placeHolder]="'Número de Nómina'" [required]="required" [readonly]="disabled" [spinners]="false"
+              [nodecimals]="true">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-input [control]="ejecutivosForm.controls['nombreejecutivo']" [controlName]="'nombreejecutivo'"
+              [label]="'Nombre'" [placeHolder]="'Nombre'" [required]="required" [readonly]="disabled"
+              [spinners]="false" [nodecimals]="true">
+            </control-input>
+          </div>
+        </div>
+        <div class="lmn-row">
+          <div class="lmn-col-md-6">
+            <control-input [control]="ejecutivosForm.controls['telefonoejecutivo']" [controlName]="'telefonoejecutivo'"
+              [label]="'Teléfono'" [placeHolder]="'Teléfono'" [required]="required"  [readonly]="disabled">
+            </control-input>
+          </div>
+          <div class="lmn-col-md-6">
+            <control-input [control]="ejecutivosForm.controls['correoejecutivo']" [controlName]="'correoejecutivo'"
+              [label]="'Email'" [placeHolder]="'Email'" [required]="required" [readonly]="disabled">
+            </control-input>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-footer">
+      <a class="lmn-btn lmn-btn-danger lmn-ui-lg" [ngClass]="{'float-left':isChecker==true}"
+        routerLink="/arrendadora/ejecutivos"><em class="lmnicon lmnicon-left"></em> Regresar</a>
+      <button class="lmn-btn lmn-btn-success lmn-ui-lg" (click)='guardar()'>{{btnAddText}} <em
+          class=" lmnicon lmnicon-{{btnAddText == 'Guardar' ? 'save' : 'trash'}}"></em></button>
+    </div>
+  </div>
+</div>

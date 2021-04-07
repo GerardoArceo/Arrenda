@@ -1,0 +1,293 @@
+<div class="center-form lmn-text-color-0">
+
+  <div *ngIf="editMode || checkerMode">
+    <ng-container *ngTemplateOutlet="firstFormTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="bienesFormTemplate"></ng-container>
+
+    <div class="form-footer text-center" *ngIf="checkerMode">
+      <button type="button" routerLink="/arrenda/facturaProveedor" class="lmn-btn lmn-btn-warning lmn-ui-lg">
+        <i class="lmnicon lmnicon-left"></i>Cancelar
+      </button>
+      <button type="button" class="lmn-btn lmn-btn-danger lmn-ui-lg" (click)="rechazarCambios()">
+        <i class="lmnicon lmnicon-close"></i>Rechazar
+      </button>
+      <button type="button" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)="validarCambios()">
+        <i class="lmnicon lmnicon-check"></i>Validar
+      </button>
+    </div>
+
+    <div class="form-footer text-center" *ngIf="editMode">
+      <button type="button" routerLink="/arrenda/facturaProveedor" class="lmn-btn lmn-btn-danger lmn-ui-lg">
+        <i class="lmnicon lmnicon-close"></i>Cancelar
+      </button>
+      <button type="button" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)="guardar()">
+        <i class="lmnicon lmnicon-save"></i>Guardar
+      </button>
+    </div>
+  </div>
+
+  <mat-horizontal-stepper #stepper linear #stepper class="lmn-text-color-0" *ngIf="addMode">
+    <ng-template matStepperIcon="edit" let-index="index">
+      {{index+1}}
+    </ng-template>
+    <ng-template matStepperIcon="number" let-index="index">
+      {{index+1}}
+    </ng-template>
+    <mat-step>
+      <ng-template matStepLabel>Inventario</ng-template>
+      <ng-container *ngTemplateOutlet="firstFormTemplate"></ng-container>
+      <div class="form-footer text-center">
+        <button type="button" routerLink="/arrenda/facturaProveedor" class="lmn-btn lmn-btn-danger lmn-ui-lg">
+          <i class="lmnicon lmnicon-close"></i>Cancelar
+        </button>
+        <button type="button" class="lmn-btn lmn-btn-primary lmn-ui-lg" (click)="firstFormButton(stepper)">
+          <i class="lmnicon lmnicon-right"></i>Siguiente
+        </button>
+      </div>
+    </mat-step>
+    <mat-step [completed]="false">
+      <ng-template matStepLabel>Clasificación tipo de bien</ng-template>
+      <ng-container *ngTemplateOutlet="bienesFormTemplate"></ng-container>
+      <div class="form-footer text-center">
+        <button type="button" class="lmn-btn lmn-btn-danger lmn-ui-lg" matStepperPrevious>
+          <i class="lmnicon lmnicon-left"></i>Regresar
+        </button>
+        <button type="button" class="lmn-btn lmn-btn-success lmn-ui-lg" (click)="guardar()">
+          <i class="lmnicon lmnicon-save"></i>Guardar
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #firstFormTemplate>
+  <div class="lmn-container">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Inventario</p>
+        </div>
+      </div>
+    </div>
+    <div class="lmn-row">
+      <div class="lmn-col-md-4">
+        <control-input [control]="firstForm.controls['clave_factura']" [controlName]="'clave_factura'"
+          [label]="'Clave Factura'" [placeHolder]="'Clave Factura'" [readonly]="true">
+        </control-input>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-numeric [control]="firstForm.controls['clave_proveedor']" [controlName]="'clave_proveedor'"
+          [label]="'Clave Proveedor'" [placeHolder]="'Clave Proveedor'" [min]="0" [spinners]="false" 
+          [readonly]="true">
+        </control-numeric>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-input [control]="firstForm.controls['nombre_proveedor']" [controlName]="'nombre_proveedor'"
+          [label]="'Nombre Proveedor'" [placeHolder]="'Nombre Proveedor'" [readonly]="true">
+        </control-input>
+      </div>
+    </div>
+    <div class="lmn-row">
+      <div class="lmn-col-md-4">
+        <control-numeric [control]="firstForm.controls['consec_factura']" [controlName]="'consec_factura'"
+          [label]="'Consec. Factura *'" [placeHolder]="'Consec. Factura'" [min]="0" [spinners]="false"
+           [readonly]="checkerMode">
+        </control-numeric>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-numeric [control]="firstForm.controls['consec_anexo']" [controlName]="'consec_anexo'"
+          [label]="'Consec. Anexo *'" [placeHolder]="'Consec. Anexo'" [min]="0" [spinners]="false" 
+          [readonly]="checkerMode">
+        </control-numeric>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-input [control]="firstForm.controls['status']" [controlName]="'status'"
+          [label]="'Status'" [placeHolder]="'Status'" [readonly]="true">
+        </control-input>
+      </div>
+    </div>
+    <div class="lmn-row">
+      <div class="lmn-col-md-4">
+        <control-select [control]="firstForm.controls['moneda']" [controlName]="'moneda'" [label]="'Moneda'"
+          [valuePrimitive]="true" [textField]="'NOMBRE_MONEDA'" [valueField]="'CLAVE_MONEDA'" [showId]="false" [allowNulls]="true"
+          [dataSource]="monedas" [readonly]="checkerMode">
+        </control-select>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-numeric [control]="firstForm.controls['aut_tipo_cambio']" [controlName]="'aut_tipo_cambio'"
+          [label]="'Aut. Tipo de Cambio'" [placeHolder]="'0.000000'" [readonly]="true"
+          [readonly]="checkerMode || firstForm.value.moneda === '1'" [currency]="true">
+        </control-numeric>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-numeric [control]="firstForm.controls['tipo_cambio']" [controlName]="'tipo_cambio'"
+          [label]="'Tipo de Cambio'" [placeHolder]="'Tipo de Cambio'" [min]="0" [spinners]="false" 
+          [readonly]="true" [readonly]="checkerMode || firstForm.value.moneda === '1'" [currency]="true">
+        </control-numeric>
+      </div>
+    </div>
+    <div class="lmn-row">
+      <div class="lmn-col-md-4">
+        <control-datepicker [control]="firstForm.controls['fecha_alta']" [controlName]="'fecha_alta'"
+          [label]="'Fecha de Alta *'" [placeHolder]="'Fecha de Alta'" [readonly]="checkerMode">
+        </control-datepicker>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-numeric [control]="firstForm.controls['importe']" [controlName]="'importe'" [label]="'Importe *'"
+          [placeHolder]="'0.00'" [min]="0" [spinners]="false"  [readonly]="checkerMode" [currency]="true">
+        </control-numeric>
+      </div>
+      <div class="lmn-col-md-4">
+        <control-numeric [control]="firstForm.controls['iva']" [controlName]="'iva'" [label]="'IVA *'"
+          [placeHolder]="'0.00'" [min]="0" [spinners]="false"  [readonly]="checkerMode" [currency]="true">
+        </control-numeric>
+      </div>
+    </div>
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Nota de Crédito</p>
+        </div>
+      </div>
+      <div class="lmn-row">
+        <div class="lmn-col-md-4">
+          <control-input [control]="firstForm.controls['numero']" [controlName]="'numero'" [label]="'Número'"
+            [placeHolder]="'Número'" [readonly]="checkerMode">
+          </control-input>
+        </div>
+        <div class="lmn-col-md-4">
+          <control-numeric [control]="firstForm.controls['importe_nota_credito']" [controlName]="'importe_nota_credito'"
+            [label]="'Importe de nota de crédito'" [placeHolder]="'0.00'" [min]="0" [spinners]="false" [currency]="true"
+             [readonly]="checkerMode">
+          </control-numeric>
+        </div>
+        <div class="lmn-col-md-4">
+          <control-numeric [control]="firstForm.controls['iva2']" [controlName]="'iva2'" [label]="'IVA'"
+            [placeHolder]="'0.00'" [readonly]="checkerMode" [currency]="true">
+          </control-numeric>
+        </div>
+      </div>
+      <div class="lmn-row">
+        <div class="lmn-col-md-12">
+          <control-textarea [control]="firstForm.controls['observaciones']" [controlName]="'observaciones'"
+            [label]="'Observaciones'" [placeHolder]="'Observaciones'" [readonly]="checkerMode">
+          </control-textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Opción de Compra</p>
+          <div class="lmn-row">
+            <div class="lmn-col-md-4">
+              <control-select [control]="firstForm.controls['tipo']" [controlName]="'tipo'" [label]="'Tipo *'"
+                [valuePrimitive]="true" [textField]="'NAME'" [valueField]="'ID'" [showId]="false" [allowNulls]="true"
+                [dataSource]="catalogoTipoCompra" [readonly]="checkerMode">
+              </control-select>
+            </div>
+            <div class="lmn-col-md-4">
+              <control-numeric [control]="firstForm.controls['importe_compra']" [controlName]="'importe_compra'"
+                [label]="'Importe de compra'" [placeHolder]="'0.00'" [min]="0" [spinners]="false" [currency]="true"
+                 [readonly]="checkerMode">
+              </control-numeric>
+            </div>
+            <div class="lmn-col-md-4">
+              <control-numeric [control]="firstForm.controls['iva3']" [controlName]="'iva3'" [label]="'IVA'"
+                [placeHolder]="'0.00'" [readonly]="checkerMode" [currency]="true">
+              </control-numeric>
+            </div>
+          </div>
+          <div class="lmn-row">
+            <div class="lmn-col-md-4">
+              <control-datepicker [control]="firstForm.controls['primera_renta']" [controlName]="'primera_renta'"
+                [label]="'Primera renta *'" [placeHolder]="'Primera renta'" [readonly]="checkerMode">
+              </control-datepicker>
+            </div>
+            <div class="lmn-col-md-4">
+              <control-numeric [control]="firstForm.controls['iva_costo_adquisicion']"
+                [controlName]="'iva_costo_adquisicion'" [label]="'IVA Costo adquisición'"
+                [placeHolder]="'0.00'" [min]="0" [spinners]="false"  [currency]="true"
+                [readonly]="checkerMode">
+              </control-numeric>
+            </div>
+            <div class="lmn-col-md-4">
+              <control-numeric [control]="firstForm.controls['subprecio']" [controlName]="'subprecio'"
+                [label]="'Imp. No Aforado o Subprecio'" [placeHolder]="'0.00'" [currency]="true"
+                [readonly]="checkerMode">
+              </control-numeric>
+            </div>
+          </div>
+          <div class="lmn-row">
+            <div class="lmn-col-md-6">
+              <control-numeric [control]="firstForm.controls['valor_residual']" [controlName]="'valor_residual'"
+                [label]="'Valor residual'" [placeHolder]="'0.00'" [readonly]="checkerMode" [currency]="true">
+              </control-numeric>
+            </div>
+            <div class="lmn-col-md-6">
+              <control-numeric [control]="firstForm.controls['imp_rentas_garantia']"
+                [controlName]="'imp_rentas_garantia'" [label]="'Imp. Rentas Garantía'"
+                [placeHolder]="'0.00'" [min]="0" [spinners]="false" 
+                [readonly]="checkerMode" [currency]="true">
+              </control-numeric>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+<ng-template #bienesFormTemplate>
+  <div class="lmn-container">
+    <div class="form-head-table">
+      <div class="lmn-row">
+        <div class="lmn-col-sm text-center">
+          <p>Solicitud de Disposición</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-body">
+      <button type="button" class="lmn-btn lmn-btn-info lmn-ui-lg" (click)="openModalAgregarBien()">
+        Agregar bienes <i class="lmnicon lmnicon-add"></i>
+      </button>
+      <div class="lmn-scrollbar-x">
+        <control-grid [search]="''" [dataSource]="items2" [tableColumns]="columnsItem" [dataSize]="0">
+        </control-grid>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #accionTemplate let-columnVal="item">
+  <button (click)="eliminarItem(columnVal)" type="button"
+    class='lmn-btn lmn-btn-danger' matTooltip="Borrar Item">
+    <i class="lmnicon lmnicon-trash"></i>
+  </button>
+  <button (click)="editarItem(columnVal)" type="button"
+    class='lmn-btn lmn-btn-success' matTooltip="Editar Item">
+    <i class="lmnicon lmnicon-pencil"></i>
+  </button>
+</ng-template>
